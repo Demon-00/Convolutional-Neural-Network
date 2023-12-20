@@ -92,7 +92,7 @@ If we apply filter F x F in (N+2p) x (N+2p) input matrix with padding, then we w
 > p = (F-1)/2 ---(3)
 
 
-The equation (3) <p style="bgcolor:#0969DA">clearly shows that Padding depends on</p> the dimension of filter.
+The equation (3) <span bgcolor="yellow">clearly shows that Padding depends on</span> the dimension of filter.
 
 
 
