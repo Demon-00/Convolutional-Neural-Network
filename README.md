@@ -90,7 +90,7 @@ If we apply filter F x F in (N+2p) x (N+2p) input matrix with padding, then we w
 > (N+2p-F+1)x(N+2p-F+1) equivalent to NxN
 > N+2p-F+1 = N ---(2)
 > p = (F-1)/2 ---(3)
-The equation (3) <p style="bgcolor: Yellow">clearly shows that Padding depends on</p> the dimension of filter.
+The equation (3) <p style="bgcolor: `#0969DA`">clearly shows that Padding depends on</p> the dimension of filter.
 
 
 
