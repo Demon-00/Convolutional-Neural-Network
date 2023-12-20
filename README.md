@@ -2,11 +2,10 @@
 Learn Convolutional Neural Network from basic and its implementation
 
 ## Table of contents
-- [X] What is CNN ?
-- [X] Why should we use CNN ?
-- [ ] Few Definitions
-- [ ] Layers in CNN
-- [ ] Keras Implementation
+- What is CNN ?
+- Why should we use CNN ?
+- Few Definitions
+- Layers in CNN
 
 ## 1. What is CNN ?
 Computer vision is evolving rapidly day-by-day. Its one of the reason is deep learning. When we talk about computer vision, a term convolutional neural network( abbreviated as CNN) comes in our mind because CNN is heavily used here. Examples of CNN in computer vision are face recognition, image classification etc. It is similar to the basic neural network. CNN also have learnable parameter like neural network i.e, weights, biases etc.
@@ -91,22 +90,50 @@ If we apply filter F x F in (N+2p) x (N+2p) input matrix with padding, then we w
 > N+2p-F+1 = N ---(2)
 > p = (F-1)/2 ---(3)
 
+The equation (3) clearly shows that Padding depends on the dimension of filter.
 
-The equation (3) <span bgcolor="yellow">clearly shows that Padding depends on</span> the dimension of filter.
+## 4. Layers in CNN
+There are six different layers in CNN
+- Input layer
+- Convo layer (Convo + ReLU)
+- Pooling layer
+- Fully connected(FC) layer
+- Softmax/logistic layer
+- Output layer
 
+### 4.1 Input Layer
+Input layer in CNN should contain image data. Image data is represented by three dimensional matrix as we saw earlier. You need to reshape it into a single column. Suppose you have image of dimension 28 x 28 =784, you need to convert it into 784 x 1 before feeding into input. If you have “m” training examples then dimension of input will be (784, m).
 
+### 4.2. Convo Layer
+Convo layer is sometimes called feature extractor layer because features of the image are get extracted within this layer. First of all, a part of image is connected to Convo layer to perform convolution operation as we saw earlier and calculating the dot product between receptive field(it is a local region of the input image that has the same size as that of filter) and the filter. Result of the operation is single integer of the output volume. Then we slide the filter over the next receptive field of the same input image by a Stride and do the same operation again. We will repeat the same process again and again until we go through the whole image. The output will be the input for the next layer.
 
+Convo layer also contains ReLU activation to make all negative value to zero.
 
+### 4.3. Pooling Layer
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GksqN5XY8HPpIddm5wzm7A.jpeg">
+  <source media="(prefers-color-scheme: light)" srcset="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GksqN5XY8HPpIddm5wzm7A.jpeg">
+  <img alt="Pooling in CNN" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GksqN5XY8HPpIddm5wzm7A.jpeg">
+</picture>
 
+Pooling layer is used to reduce the spatial volume of input image after convolution. It is used between two convolution layer. If we apply FC after Convo layer without applying pooling or max pooling, then it will be computationally expensive and we don’t want it. So, the max pooling is only way to reduce the spatial volume of input image. In the above example, we have applied max pooling in single depth slice with Stride of 2. You can observe the 4 x 4 dimension input is reduce to 2 x 2 dimension.
 
+There is no parameter in pooling layer but it has two hyperparameters — Filter(F) and Stride(S).
+In general, if we have input dimension W1 x H1 x D1, then
+W2 = (W1−F)/S+1
+H2 = (H1−F)/S+1
+D2 = D1
+Where W2, H2 and D2 are the width, height and depth of output.
 
+### 4.4. Fully Connected Layer(FC)
+Fully connected layer involves weights, biases, and neurons. It connects neurons in one layer to neurons in another layer. It is used to classify images between different category by training.
 
+### 4.5. Softmax / Logistic Layer
+Softmax or Logistic layer is the last layer of CNN. It resides at the end of FC layer. Logistic is used for binary classification and softmax is for multi-classification.
 
+### 4.6. Output Layer
+Output layer contains the label which is in the form of one-hot encoded.
 
-
-
-
-
-
+Now you have a good understanding of CNN. Let’s implement a CNN.
 
