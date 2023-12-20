@@ -120,10 +120,15 @@ Convo layer also contains ReLU activation to make all negative value to zero.
 Pooling layer is used to reduce the spatial volume of input image after convolution. It is used between two convolution layer. If we apply FC after Convo layer without applying pooling or max pooling, then it will be computationally expensive and we don’t want it. So, the max pooling is only way to reduce the spatial volume of input image. In the above example, we have applied max pooling in single depth slice with Stride of 2. You can observe the 4 x 4 dimension input is reduce to 2 x 2 dimension.
 
 There is no parameter in pooling layer but it has two hyperparameters — Filter(F) and Stride(S).
+
 In general, if we have input dimension W1 x H1 x D1, then
+
 W2 = (W1−F)/S+1
+
 H2 = (H1−F)/S+1
+
 D2 = D1
+
 Where W2, H2 and D2 are the width, height and depth of output.
 
 ### 4.4. Fully Connected Layer(FC)
